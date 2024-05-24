@@ -110,3 +110,14 @@ form .password i {
 .submit-btn input:hover {
   background:rgb(255, 236, 158);
 }
+.edit {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}
+.edit a {
+  border: 1px solid black;
+  margin: 10px;
+  margin-bottom: 10px;
+  size: 30px;
+}

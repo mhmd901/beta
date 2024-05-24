@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="myscript.js"></script>
     <title>Document</title>
+    <link rel="stylesheet" href="user.css">
 </head>
 
 <body>
@@ -27,14 +28,20 @@ show_users();
 
   function show_users(){
     global $con;
-    $query1 = "SELECT id FROM `studentinfo` ";
+    $query1 = "SELECT * FROM `studentinfo` ";
     $result1 = mysqli_query($con , $query1);
     
     $id = array();
     while ($row = mysqli_fetch_assoc($result1)) {
            $id[] = $row['id'];
+           $fname[] = $row['Fname'];
+           $lname[] = $row['Lname'];
+           $dob[] = $row['Date'];
+           $gender[] = $row['Gender'];
+           $phone[] = $row['phone'];
+           $city[] = $row['city'];
     }
-    echo("<script>show_users(".json_encode($id).")</script>");
+    echo("<script>show_users(".json_encode($id).",".json_encode($fname).",".json_encode($lname).",".json_encode($dob).",".json_encode($gender).",".json_encode($phone).",".json_encode($city).")</script>");
 
 }
 

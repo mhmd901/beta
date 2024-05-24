@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sign_up</title>
+    <title>admin</title>
     <link rel="stylesheet" href="style1.css"> 
   </head>
   <body>
@@ -42,11 +42,12 @@
         <input type="submit" value="Submit">
       </div>
  
-    </form>
+    </form> 
+    <div class="edit">
     <a href="admin_edit.php">edit user</a><br>
-    <a href="crs_edit.php">crs edit</a>
-    <a href="users.php">all users</a>
-
+    <a href="crs_edit.php">crs edit</a><br>
+    <a href="users.php">all users</a><br>
+    </div>
 
   </body>
 </html>

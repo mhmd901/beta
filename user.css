@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.mother {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.child {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.outputbox {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.users_info table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.users_info th, .users_info td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.users_info th {
+    background-color: #f2f2f2;
+    font-weight: bold; /* Make th elements bold */
+}
+
+.users_info tr:nth-child(even) {
+    background-color: #f2f2f2;
+}

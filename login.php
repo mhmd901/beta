@@ -1,26 +1,23 @@
 <?php
 
 $nameError = "";
-
 $passwordError = "";
 
 if(isset($_POST['submit'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-$username = $_POST['username'];
+    if (empty($username)) {
+        $nameError = "Name is Required";
+    }
 
-$password = $_POST['password'];}
+    if (empty($password)) {
+        $passwordError = "Password is Required";
+    }
+}
 
-if (empty($username)) {
-
-$nameError = "Name is Required";
-
-} else {}
-if (empty($password)) {
-
-$nameError1 = "password is Required";
-
-} else {}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -35,12 +32,12 @@ $nameError1 = "password is Required";
       <div class="form-group email">
         <label for="email">Email Address</label>
         <input type="text"  name="email" id="email" placeholder="Enter your email address">
-        <span style="color: red;"><?php echo $nameError1?></span>
+        <span style="color: red;"><?php echo $nameError?></span>
       </div>
       <div class="form-group password">
         <label for="password">Password</label>
         <input type="password" name="password" id="password" placeholder="Enter your password">
-        <span style="color: red;"><?php echo $nameError1?></span>
+        <span style="color: red;"><?php echo $passwordError?></span>
         <i id="pass-toggle-btn" class="fa-solid fa-eye"></i>
       </div>
       <div class="form-group submit-btn">

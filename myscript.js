@@ -4,6 +4,7 @@ function show_edit_user(id, fname, lname, city, dob,phone,gender, Password) {
         <form method="post" action="admin_edit_profile.php?action=saveuser">
           <p>${id}</p>
           <input type="hidden" name="id" value="${id}" />
+          <label>first name</label>
           <input
             type="text"
             name="fname"
@@ -11,6 +12,7 @@ function show_edit_user(id, fname, lname, city, dob,phone,gender, Password) {
             value="${fname}"
             required
           />
+          <label>last name</label>
           <input
             type="text"
             name="lname"
@@ -21,14 +23,15 @@ function show_edit_user(id, fname, lname, city, dob,phone,gender, Password) {
           <!--select-->
           
   
-  
-    <input
+          <label>city</label>
+          <input
             type="text"
             name="city"
             placeholder="city"
             value="${city}"
             required
           />
+          <label>date of birth</label>
           <input
             type="text"
             name="dob"
@@ -36,6 +39,7 @@ function show_edit_user(id, fname, lname, city, dob,phone,gender, Password) {
             value="${dob}"
             required
           />
+          <label>phone</label>
           <input
             type="text"
             name="phone"
@@ -43,6 +47,7 @@ function show_edit_user(id, fname, lname, city, dob,phone,gender, Password) {
             value="${phone}"
             required
           />
+          <label>phone</lable>          
           <input
             type="text"
             name="gender"
@@ -50,6 +55,7 @@ function show_edit_user(id, fname, lname, city, dob,phone,gender, Password) {
             value="${gender}"
             required
           />
+          <label>password</label>
           <input
             type="text"
             name="password"
@@ -57,13 +63,15 @@ function show_edit_user(id, fname, lname, city, dob,phone,gender, Password) {
             value="${Password}"
             required
           />
-          <button type="submit">save</button>
+          <div class="form-group submit-btn">
+          <input type="submit" value="save">
+        </div>
         </form>
       </div>`;
   
     box.innerHTML = form;
   } 
-  function show_users(Id) {
+  function show_users(Id,fname,lname,dob,gender,phone,city) {
   
     let output = document.getElementById("outputbox");
   
@@ -72,6 +80,12 @@ function show_edit_user(id, fname, lname, city, dob,phone,gender, Password) {
        <table>
         <tr>
           <th>ID</th>
+          <th>first name</th>
+          <th>last name</th>
+          <th>date of birth </th>
+          <th>gender</th>
+          <th>phone</th>
+          <th>city</th>
         </tr>
       
      
@@ -81,7 +95,13 @@ function show_edit_user(id, fname, lname, city, dob,phone,gender, Password) {
       form += `
         <tr>
           <td>${Id[i]}</td>
-        </tr>
+          <td>${fname[i]}</td>
+          <td>${lname[i]}</td>
+          <td>${dob[i]}</td>
+          <td>${gender[i]}</td>
+          <td>${phone[i]}</td>
+          <td>${city[i]}</td>
+        </tr> 
       
       `;
     }
@@ -92,4 +112,4 @@ function show_edit_user(id, fname, lname, city, dob,phone,gender, Password) {
         </div>`;
   
     output.innerHTML = form;
-  }
+  }     

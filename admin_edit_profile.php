@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="myscript.js"></script>
     <title>User Profile</title>
+    <link rel="stylesheet" href="style1.css">
 </head>
 <body>
     
@@ -32,8 +33,8 @@ switch ($action) {
 function show_edit_user(){
     include('connection.php');
     session_start();
-    $email = $_SESSION['email'];
-    $query = "SELECT * FROM `studentinfo` WHERE `Email` = '$email'";
+    $id = $_SESSION['id'];
+    $query = "SELECT * FROM `studentinfo` WHERE `id` = '$id'";
     $res = mysqli_query($con, $query);
     if (mysqli_num_rows($res) > 0) {
         $temp_data = mysqli_fetch_assoc($res);
@@ -54,17 +55,17 @@ function show_edit_user(){
 function save_edit_user() {
     include('connection.php');
     
-    // Sanitize input (use mysqli_real_escape_string or prepared statements)
+
     $fname = mysqli_real_escape_string($con, $_POST['fname']);
-    $lname = mysqli_real_escape_string($con, $_POST['Lname']);
+    $lname = mysqli_real_escape_string($con, $_POST['lname']);
     $phone = mysqli_real_escape_string($con, $_POST['phone']);
     $city = mysqli_real_escape_string($con, $_POST['city']);
     $dob = mysqli_real_escape_string($con, $_POST['dob']);
     $gender = mysqli_real_escape_string($con, $_POST['gender']);
     $password = $_POST['password'];
-    $id = (int)$_POST['id']; // Ensure ID is an integer
+    $id = (int)$_POST['id']; 
             
-    // Update query using prepared statement
+
     $update = "UPDATE `studentinfo`
                SET `Fname`='$fname', `Lname`='$lname', `Password`='$password',
                    `Date`='$dob', `Gender`='$gender', `phone`='$phone', `city`='$city'

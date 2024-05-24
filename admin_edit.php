@@ -8,15 +8,10 @@
   </head>
   <body>
     <form action="admin_edit_action.php" method="post">
-      <h2>login</h2>
-      <div class="form-group email">
-        <label for="email">Email Address</label>
-        <input type="text"  name="email" id="email" placeholder="Enter your email address">
-      </div>
-      <div class="form-group password">
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" placeholder="Enter your password">
-        <i id="pass-toggle-btn" class="fa-solid fa-eye"></i>
+      <h2>edit user</h2>
+      <div class="form-group id">
+        <label for="id">id</label>
+        <input type="text"  name="id" id="id" placeholder="Enter the student id">
       </div>
       <div class="form-group submit-btn">
         <input type="submit" value="Submit">
