@@ -13,7 +13,7 @@
         <label for="crs_cridt">course credit </label>
         <input type="text"  name="crs_crdt" id="crs_crdt" placeholder="enter course credits " required>
         <div class="form-group submit-btn">
-        <input type="submit" value="Submit">
+        <input type="submit" value="save">
       </div>
 </form>
 </body>

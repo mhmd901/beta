@@ -16,9 +16,10 @@
                 <div class="menu">
                     <ul>
                         <li><a href="#service">Services</a></li>
-                        <li><a href="#about" >About </a></li>
+                        <li><a href="blogs.php">blogs </a></li>
                         <li><a href="#contact">Contact </a></li>
-                        <li><a href="login.php">login </a></li>
+                        <li><a href="in_login.php" >instructor </a></li>
+                        <li><a href="login.php">student</a></li>
 
                     </ul>
                 </div>
