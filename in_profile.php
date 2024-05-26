@@ -12,8 +12,8 @@ if (mysqli_num_rows($res) > 0) {
     $city = $temp_data['city'];
     $dob = $temp_data['dob'];
     $gender = $temp_data['gender'];
-    session_start();
-   $_session['id']=$id; 
+   
+ 
 } else {
 
 }
