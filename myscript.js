@@ -71,6 +71,21 @@ function show_edit_user(id, fname, lname, city, dob,phone,gender, Password) {
   
     box.innerHTML = form;
   } 
+  function show_blogs(title, date, id) {
+    let output = document.getElementById("blog-post-m");
+    for (let i = 0; i < id.length; i++) {
+        let form = `
+            <div class="blog-post">
+            <h2>${title[i]}</h2>
+            <p>${date[i]}</p>
+            <a href="full-article.html">Read more</a>
+            </div>
+        `;
+        output.innerHTML += form; 
+    }
+}
+
+
   function show_users(Id,fname,lname,dob,gender,phone,city) {
   
     let output = document.getElementById("outputbox");
@@ -113,3 +128,20 @@ function show_edit_user(id, fname, lname, city, dob,phone,gender, Password) {
   
     output.innerHTML = form;
   }     
+  const d = new Date();
+
+var DATE = String(d.getDate()) + '/' + String(d.getMonth()) + '/' + String(d.getFullYear());
+
+var TIME = d.toLocaleString("en-US",
+
+  {
+    hour: "numeric",
+
+    minute: "numeric",
+
+    hour12: true
+  }
+);
+var dateTime = DATE + ', ' + TIME;
+
+document.getElementById("blogDate").value = dateTime;
