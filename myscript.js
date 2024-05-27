@@ -1,6 +1,6 @@
-function show_edit_user(id, fname, lname, city, dob,phone,gender, Password) {
-    let box = document.getElementById("box");
-    let form = `<div class="edit_user">
+function show_edit_user(id, fname, lname, city, dob, phone, gender, Password) {
+  let box = document.getElementById("box");
+  let form = `<div class="edit_user">
         <form method="post" action="admin_edit_profile.php?action=saveuser">
           <p>${id}</p>
           <input type="hidden" name="id" value="${id}" />
@@ -68,14 +68,14 @@ function show_edit_user(id, fname, lname, city, dob,phone,gender, Password) {
         </div>
         </form>
       </div>`;
-  
-    box.innerHTML = form;
-  } 
-  function show_blogs(title, date, id) {
-    let output = document.getElementById("post-m");  
 
-    for (let i = 0; i < id.length; i++) {
-        let form = `
+  box.innerHTML = form;
+}
+function show_blogs(title, date, id) {
+  let output = document.getElementById("post-m");
+  let form = "";
+  for (let i = 0; i < id.length; i++) {
+    form += `
             <div class="blog-post">
                 <form method="post" action="f_blog.php">
                 <input type="hidden" name="id" value="${id[i]}">
@@ -85,15 +85,15 @@ function show_edit_user(id, fname, lname, city, dob,phone,gender, Password) {
                 </form>
             </div>
         `;
-        output.innerHTML += form;
-    }
+  }
+  output.innerHTML = form;
 }
 function get_blogs(title, date, id) {
-  let output1 = document.getElementById("blog-m");  
+  let output1 = document.getElementById("blog-m");
 
-  let form = ``
+  let form = "";
   for (let i = 0; i < id.length; i++) {
-      form += `
+    form += `
           <div class="blog-post">
               <form method="post" action="d_blog.php">
               <input type="hidden" name="id" value="${id[i]}">
@@ -103,19 +103,14 @@ function get_blogs(title, date, id) {
               </form>
           </div>
       `;
-      output1.innerHTML += form;
   }
+  output1.innerHTML = form;
 }
 
+function show_users(Id, fname, lname, dob, gender, phone, city) {
+  let output = document.getElementById("outputbox");
 
-
-
-
-  function show_users(Id,fname,lname,dob,gender,phone,city) {
-  
-    let output = document.getElementById("outputbox");
-  
-   let form = `
+  let form = `
     <div class="users_info">
        <table>
         <tr>
@@ -130,9 +125,9 @@ function get_blogs(title, date, id) {
       
      
     `;
-  
-    for (let i = 0; i < Id.length; i++) {
-      form += `
+
+  for (let i = 0; i < Id.length; i++) {
+    form += `
         <tr>
           <td>${Id[i]}</td>
           <td>${fname[i]}</td>
@@ -144,29 +139,35 @@ function get_blogs(title, date, id) {
         </tr> 
       
       `;
-    }
-  
-    form += ` </table>
+  }
+
+  form += ` </table>
   
          
         </div>`;
-  
-    output.innerHTML = form;
-  }     
-  const d = new Date();
 
-var DATE = String(d.getDate()) + '/' + String(d.getMonth()) + '/' + String(d.getFullYear());
+  output.innerHTML = form;
+}
+const d = new Date();
 
-var TIME = d.toLocaleString("en-US",
+var DATE =
+  String(d.getDate()) +
+  "/" +
+  String(d.getMonth()) +
+  "/" +
+  String(d.getFullYear());
+
+var TIME = d.toLocaleString(
+  "en-US",
 
   {
     hour: "numeric",
 
     minute: "numeric",
 
-    hour12: true
+    hour12: true,
   }
 );
-var dateTime = DATE + ', ' + TIME;
+var dateTime = DATE + ", " + TIME;
 
 document.getElementById("blogDate").value = dateTime;
