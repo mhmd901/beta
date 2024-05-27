@@ -22,6 +22,7 @@ include('connection.php');
 
 function show_blogs() {
     global $con;
+    session_start();
     $sql = "SELECT * FROM blogs ORDER BY id DESC";
     $res = mysqli_query($con, $sql);
 
@@ -31,6 +32,7 @@ function show_blogs() {
             $title[] = $temp_data['title'];
             $date[] = $temp_data['date'];
         }
+        $_SESSION["user_id"]=$id;
         echo("<script>show_blogs(".json_encode($title).",".json_encode($date).",".json_encode($id).")</script>");
     } else {
         echo "Error executing query:";

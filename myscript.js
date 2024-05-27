@@ -76,14 +76,17 @@ function show_edit_user(id, fname, lname, city, dob,phone,gender, Password) {
     for (let i = 0; i < id.length; i++) {
         let form = `
             <div class="blog-post">
-            <h2>${title[i]}</h2>
-            <p>${date[i]}</p>
-            <a href="full-article.html">Read more</a>
+                <form method="post" action="f_blog.php">
+                    <h2>${title[i]}</h2>
+                    <p>${date[i]}</p>
+                    <input type="submit" value="see more">
+                </form>
             </div>
         `;
-        output.innerHTML += form; 
+        output.innerHTML += form;
     }
 }
+
 
 
   function show_users(Id,fname,lname,dob,gender,phone,city) {
