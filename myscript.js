@@ -87,6 +87,27 @@ function show_edit_user(id, fname, lname, city, dob,phone,gender, Password) {
         output.innerHTML += form;
     }
 }
+function delete_blogs(title, date, id) {
+  let output = document.getElementById("blog-delete-m");
+  let htmlContent = "";
+  for (let i = 0; i < id.length; i++) {
+      let form = `
+          <div class="blog-post">
+              <form method="post" action="d.blog.php">
+                  <input type="hidden" name="id" value="${id[i]}">
+                  <h2>${title[i]}</h2>
+                  <p>${date[i]}</p>
+                  <input type="submit" value="delete">
+              </form>
+          </div>
+      `;
+
+      htmlContent += form;
+  }
+
+  output.innerHTML = htmlContent;
+}
+
 
 
 
