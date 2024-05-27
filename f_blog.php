@@ -1,5 +1,4 @@
 <?php 
-include('blogs.php');
-$id = $_SESSION["user_id"];
+$id=$_POST['id'];
 echo $id;
 ?>

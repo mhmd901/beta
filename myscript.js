@@ -77,6 +77,7 @@ function show_edit_user(id, fname, lname, city, dob,phone,gender, Password) {
         let form = `
             <div class="blog-post">
                 <form method="post" action="f_blog.php">
+                <input type="hidden" name="id" value="${id[i]}">
                     <h2>${title[i]}</h2>
                     <p>${date[i]}</p>
                     <input type="submit" value="see more">

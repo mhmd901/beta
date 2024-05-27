@@ -5,7 +5,7 @@ $username= "root";
 
 $password= ""; 
 
-$db_name="BETA";
+$db_name="beta";
 
 $con= mysqli_connect($host, $username, $password, $db_name);
 
