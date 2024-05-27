@@ -171,3 +171,33 @@ var TIME = d.toLocaleString(
 var dateTime = DATE + ", " + TIME;
 
 document.getElementById("blogDate").value = dateTime;
+
+function show_crs(id, crs_name, crs_cridt) {
+  let output = document.getElementById("crs-m");
+  let form = `
+    <table>
+      <tr>
+        <th>name</th>
+        <th>credit</th>
+        <th>Delete</th>
+      </tr>
+  `;
+
+  for (let i = 0; i < id.length; i++) {
+    form += `
+      <tr>
+        <td>${crs_name[i]}</td>
+        <td>${crs_cridt[i]}</td>
+        <td>
+          <form method="post" action="d_crs.php">
+            <input type="hidden" name="id" value="${id[i]}">
+            <input type="submit" value="Delete" name="delete">
+          </form>
+        </td>
+      </tr>
+    `;
+  }
+
+  form += `</table>`;
+  output.innerHTML = form;
+}

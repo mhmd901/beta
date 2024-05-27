@@ -120,3 +120,19 @@ form .password i {
   margin-bottom: 10px;
   size: 30px;
 }
+#crs-m table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#crs-m th, #crs-m td {
+  padding: 8px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+#crs-m th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
