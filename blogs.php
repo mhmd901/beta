@@ -11,7 +11,7 @@
 <div class="header">
         <h1> Blog</h1>
     </div>
-    <div  id="blog-post-m">
+    <div  id="post-m">
         
     </div>
     
