@@ -1,3 +1,5 @@
+<!--replaced-->
+
 <?php
 
  $servername = "localhost"; 
