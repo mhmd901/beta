@@ -37,7 +37,17 @@
                 <option value="" selected disabled>Select your gender</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
-                <option value="Other">Other</option>
+                <option value="programer">programer</option>
+            </select>
+        </div>
+        </div>
+        <div class="form-group role">
+            <label for="role">role</label>
+            <select id="role" name="role">
+                <option value="" selected disabled>Select the role</option>
+                <option value="student">student</option>
+                <option value="instractor">instractor</option>
+                <option value="admin">admin</option>
             </select>
         </div>
         <div class="form-group submit-btn">
@@ -80,7 +90,8 @@ $email = $new_id . '@beta';
 $password = $new_id . 'mm';
 $date = $_POST['date'];
 $Gender = $_POST['Gender'];
-$query = "INSERT INTO `studentinfo` (`Fname`, `Lname`, `phone`, `Email`, `city`, `Password`, `Date`, `Gender`) VALUES ('$fname', '$lname', '$phone', '$email', '$city', '$password', '$date', '$Gender')";
+$role = $_POST['role'];
+$query = "INSERT INTO `studentinfo` (`Fname`, `Lname`, `phone`, `Email`, `city`, `Password`, `Date`, `Gender`,`role`) VALUES ('$fname', '$lname', '$phone', '$email', '$city', '$password', '$date', '$Gender','$role')";
 mysqli_query($con, $query);
     }
 ?>

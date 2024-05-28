@@ -3,7 +3,7 @@ include('../backend/connection.php');
 include('../backend/functions.php');
 
 $email = $_SESSION['email'];
-$query = "SELECT * FROM `studentinfo` WHERE `Email` = '$email'";
+$query = "SELECT * FROM `studentinfo` WHERE `Email` = '$email' and `role` = `student`";
 $res = mysqli_query($con, $query);
 if (mysqli_num_rows($res) > 0) {
     $temp_data = mysqli_fetch_assoc($res);
