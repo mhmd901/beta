@@ -57,7 +57,7 @@
     </form>
     <div class="edit">
         <a href="admin/admin_edit.php">edit user</a><br>
-        <a href="admin/crs_edit.php">add courses</a><br>
+        <a href="admin/crs_edit.php">courses</a><br>
         <a href="admin/users.php">all users</a><br>
         <a href="admin/blog_admin.php">add blog</a><br>
     </div>

@@ -69,7 +69,7 @@ function get_blogs() {
             $date[] = $temp_data['date'];
         }
         $_SESSION["id"] = $id;
-        echo("<script>show_blogs(".json_encode($title).",".json_encode($date).",".json_encode($id).")</script>");
+        echo("<script>get_blogs(".json_encode($title).",".json_encode($date).",".json_encode($id).")</script>");
     } else {
         echo "Error retrieving blog data.";
     }

@@ -95,7 +95,7 @@ function get_blogs(title, date, id) {
   for (let i = 0; i < id.length; i++) {
     form += `
           <div class="blog-post">
-              <form method="post" action="d_blog.php">
+              <form method="post" action="../d_blog.php">
               <input type="hidden" name="id" value="${id[i]}">
                   <h2>${title[i]}</h2>
                   <p>${date[i]}</p>
@@ -191,7 +191,7 @@ function show_crs(id, crs_name, crs_cridt) {
         <td>${crs_name[i]}</td>
         <td>${crs_cridt[i]}</td>
         <td>
-          <form method="post" action="d_crs.php">
+          <form method="post" action="../pages/d_crs.php">
             <input type="hidden" name="id" value="${id[i]}">
             <input type="submit" value="Delete" name="delete">
           </form>
