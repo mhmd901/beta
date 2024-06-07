@@ -29,7 +29,7 @@ show_users();
 
   function show_users(){
     global $con;
-    $query1 = "SELECT * FROM `studentinfo` ";
+    $query1 = "SELECT * FROM `pr_info` ";
     $result1 = mysqli_query($con , $query1);
     
     $id = array();

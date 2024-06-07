@@ -3,7 +3,7 @@
 
 <?php
 include('connection.php');
-$query1 = "SELECT id FROM studentinfo ORDER BY id DESC LIMIT 1";
+$query1 = "SELECT id FROM pr_info ORDER BY id DESC LIMIT 1";
 $res1 = mysqli_fetch_assoc(mysqli_query($con, $query1));
 $new_id = $res1['id'] + 1;
 $fname = $_POST['Fname'];
@@ -14,7 +14,8 @@ $email = $new_id . '@beta';
 $password = $new_id . 'mm';
 $date = $_POST['date'];
 $Gender = $_POST['Gender'];
-$query = "INSERT INTO `studentinfo` (`Fname`, `Lname`, `phone`, `Email`, `city`, `Password`, `Date`, `Gender`) VALUES ('$fname', '$lname', '$phone', '$email', '$city', '$password', '$date', '$Gender')";
+$role = $_POST['role'];
+$query = "INSERT INTO `pr_info` (`Fname`, `Lname`, `phone`, `Email`, `city`, `Password`, `Date`, `Gender`, `role`) VALUES ('$fname', '$lname', '$phone', '$email', '$city', '$password', '$date', '$Gender', '$role')";
 mysqli_query($con, $query);
 ?>
 <!DOCTYPE html>

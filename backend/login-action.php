@@ -1,22 +1,29 @@
-<!-- replaced -->
-
 <?php
 include('connection.php');
 session_start();
-$email=$_POST['email'];
-$password=$_POST['password']; 
-$_SESSION['email'] = $email;
-$query1 = "SELECT * FROM `studentinfo` WHERE `Email` = '$email' AND `Password` = '$password'";   
-$RES = mysqli_query($con,$query1);
+
+$email = $_POST['email'];
+$password = $_POST['password'];
+
+$query1 = "SELECT * FROM `pr_info` WHERE `Email` = '$email' AND `Password` = '$password'";
+$RES = mysqli_query($con, $query1);
 $rows = mysqli_num_rows($RES);
 
 if ($rows > 0) {
-  if ($email == '1@beta' && $password == '1mm') {
-      header("location: sigin-up.php");
-  } else {
-      header("location: profile1.php");
-  }
-} else {
-  header("location: ../pages/login.php");
+    $row = mysqli_fetch_assoc($RES);
+    $userRole = $row['role']; 
+
+    if ($userRole == 'admin') {
+        header("location: ../pages/sign-up.php");
+    } elseif ($userRole == 'student') {
+        header("location: ../pages/profile1.php");
+    } elseif ($userRole == 'instractor') { 
+        header("location: ../pages/in_info.php");
+    } 
 }
+else {
+        header("location: login.php");
+    }
+
+
 ?>

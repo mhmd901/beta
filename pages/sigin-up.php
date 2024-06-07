@@ -9,7 +9,8 @@
 </head>
 
 <body>
-    <form action="sigin-up.php?action=sign-up" method="post">
+    <form action="../backend/sigin-up-action1.php" method="post">
+
         <h2>student info</h2>
         <div class="form-group fullname">
             <label for="fullname">First Name</label>
@@ -79,7 +80,7 @@ switch ($action) {
     }
     function sign_up(){
       global $con;
-      $query1 = "SELECT id FROM studentinfo ORDER BY id DESC LIMIT 1";
+      $query1 = "SELECT id FROM pr_info ORDER BY id DESC LIMIT 1";
 $res1 = mysqli_fetch_assoc(mysqli_query($con, $query1));
 $new_id = $res1['id'] + 1;
 $fname = $_POST['Fname'];
@@ -93,5 +94,6 @@ $Gender = $_POST['Gender'];
 $role = $_POST['role'];
 $query = "INSERT INTO `studentinfo` (`Fname`, `Lname`, `phone`, `Email`, `city`, `Password`, `Date`, `Gender`,`role`) VALUES ('$fname', '$lname', '$phone', '$email', '$city', '$password', '$date', '$Gender','$role')";
 mysqli_query($con, $query);
+echo "add succ";
     }
 ?>
