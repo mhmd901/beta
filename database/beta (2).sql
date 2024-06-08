@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2024 at 01:56 PM
+-- Generation Time: Jun 08, 2024 at 08:00 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -89,6 +89,7 @@ CREATE TABLE `pr_info` (
 --
 
 INSERT INTO `pr_info` (`Fname`, `Lname`, `Email`, `Password`, `Date`, `Gender`, `id`, `phone`, `city`, `role`) VALUES
+('ali', 'ali', 'ali@beta', '12mm', '2024-06-26', 'male', 5543, 0, 'tripoli', 'instructor'),
 ('ali', 'amer', '1@beta', '1mm', '2024-04-03', 'Male', 10013, 0, '', 'admin'),
 ('ali', 'mjm', '10014@beta', '10014mm', '2024-04-03', 'Male', 10014, 0, '', ''),
 ('ali', 'amer', '10015@beta', '10015mm', '2024-04-25', 'Male', 10015, 0, '', ''),
@@ -111,7 +112,8 @@ INSERT INTO `pr_info` (`Fname`, `Lname`, `Email`, `Password`, `Date`, `Gender`, 
 ('husam', 'lhafe', '10040@beta', '10040mm', '0000-00-00', '', 10040, 0, '', ''),
 ('husam', 'lhafe', '10041@beta', '10041mm', '0000-00-00', 'Male', 10041, 0, '', ''),
 ('ali', 'amer', '10042@beta', '10042mm', '2024-05-15', 'Female', 10042, 81370450, 'sarafand', ''),
-('ali', 'amer', '10043@beta', '10043mm', '2024-05-09', 'Male', 10043, 81370450, 'sarafand', 'student');
+('ali', 'amer', '10043@beta', '10043mm', '2024-05-09', 'Male', 10043, 81370450, 'sarafand', 'student'),
+('jawad', 'shehadi', 'ja@beta', '1234', '2024-05-22', 'male', 105018, 8172781, 'nabatye', 'instructor');
 
 -- --------------------------------------------------------
 
@@ -123,8 +125,33 @@ CREATE TABLE `section` (
   `sec_id` int(11) NOT NULL,
   `in_id` int(11) NOT NULL,
   `class` int(11) NOT NULL,
-  `crs_id` int(11) NOT NULL
+  `crs_id` int(11) NOT NULL,
+  `day` varchar(100) NOT NULL,
+  `time` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `section`
+--
+
+INSERT INTO `section` (`sec_id`, `in_id`, `class`, `crs_id`, `day`, `time`) VALUES
+(45, 105018, 555, 1018, 'monday', '8:00'),
+(88, 105018, 234, 1018, 'monday', '8:00'),
+(123, 10504, 345, 23344, '', '0'),
+(124, 105018, 345, 23344, 'monday', '8:00->10:00'),
+(234, 5543, 234, 1018, 'mon', '8'),
+(444, 5543, 345, 1018, 'monday', '8:00->1:30'),
+(1993, 10504, 345, 1018, '', '0'),
+(1995, 10504, 345, 1018, 'Monday', '11'),
+(1997, 10504, 345, 1018, 'Monday', '8'),
+(1998, 10504, 345, 1018, 'Monday', '11AM'),
+(2000, 10504, 345, 1018, 'Monday', '11:00 to 13:30'),
+(2001, 10504, 345, 1018, 'Monday', '14:00 to 16:30'),
+(2002, 10504, 345, 1018, 'Monday', '11:00 to 13:30'),
+(2003, 10504, 345, 1018, 'Monday', '8:00 to 10:30'),
+(2004, 10504, 555, 1018, 'Monday', '8:00 to 10:30'),
+(2005, 10504, 555, 1018, 'Monday', '8:00 to 10:30'),
+(3435, 10504, 555, 1018, 'Monday', '8:00 to 10:30');
 
 -- --------------------------------------------------------
 
@@ -138,6 +165,21 @@ CREATE TABLE `studentcrs` (
   `grades` int(11) NOT NULL,
   `sec_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `studentcrs`
+--
+
+INSERT INTO `studentcrs` (`student_id`, `course_id`, `grades`, `sec_id`) VALUES
+(333, 1018, 0, 88),
+(546, 1018, 0, 123),
+(10013, 0, 0, 1993),
+(10013, 1021, 0, 1997),
+(10013, 1025, 0, 2002),
+(10031, 1021, 0, 1998),
+(10036, 1021, 0, 444),
+(54688, 1018, 0, 88),
+(123434, 34556, 0, 88);
 
 --
 -- Indexes for dumped tables
@@ -197,32 +239,13 @@ ALTER TABLE `course`
 -- AUTO_INCREMENT for table `pr_info`
 --
 ALTER TABLE `pr_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10044;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105019;
 
 --
 -- AUTO_INCREMENT for table `section`
 --
 ALTER TABLE `section`
-  MODIFY `sec_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `section`
---
-ALTER TABLE `section`
-  ADD CONSTRAINT `section_ibfk_1` FOREIGN KEY (`crs_id`) REFERENCES `course` (`crs_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `section_ibfk_2` FOREIGN KEY (`in_id`) REFERENCES `instructorinfo` (`in_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `studentcrs`
---
-ALTER TABLE `studentcrs`
-  ADD CONSTRAINT `studentcrs_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `course` (`crs_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `studentcrs_ibfk_2` FOREIGN KEY (`student_id`) REFERENCES `pr_info` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `studentcrs_ibfk_3` FOREIGN KEY (`sec_id`) REFERENCES `section` (`sec_id`);
+  MODIFY `sec_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3436;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
