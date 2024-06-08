@@ -1,6 +1,6 @@
 <?php
 include('../backend/connection.php');
-include('../backend/functions.php');
+session_start();
 
 $email = $_SESSION['email'];
 $query = "SELECT * FROM `pr_info` WHERE `Email` = '$email' ";
@@ -25,7 +25,7 @@ if (mysqli_num_rows($res) > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>profile</title>
-    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="../style/style2.css">
 </head>
 <body>
 <div class="panel">

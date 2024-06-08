@@ -4,6 +4,7 @@ session_start();
 
 $email = $_POST['email'];
 $password = $_POST['password'];
+$_SESSION['email']= $_POST['email'];
 
 $query1 = "SELECT * FROM `pr_info` WHERE `Email` = '$email' AND `Password` = '$password'";
 $RES = mysqli_query($con, $query1);
@@ -18,7 +19,7 @@ if ($rows > 0) {
     } elseif ($userRole == 'student') {
         header("location: ../pages/profile1.php");
     } elseif ($userRole == 'instractor') { 
-        header("location: ../pages/in_info.php");
+        header("location: ../pages/in_profile.php");
     } 
 }
 else {

@@ -1,12 +1,8 @@
 <?php
     include('../backend/connection.php');
-include('../backend/functions.php');
-    /*$id = $_SESSION['instructor_id'];*/
+session_start();
     $email = $_SESSION['email'];
-     /*$_SESSION['course'] = $crs;*/
-    $query = "SELECT * 
-    FROM section 
-    WHERE in_id = (SELECT id FROM pr_info WHERE Email = '$email' )" ;
+    $query = "SELECT * FROM section WHERE in_id = (SELECT id FROM pr_info WHERE Email = '$email' )" ;
 
 
     $res = mysqli_query($con, $query);
@@ -16,12 +12,12 @@ include('../backend/functions.php');
         $class = $temp_data['class'];
         $in = $temp_data['in_id'];
         $crs = $temp_data['crs_id'];
-       
+                $_SESSION['sec_id']=$id;
+            $_SESSION['course']=$crs;
     } else {
     
     }
-         $_SESSION['sec_id']=$id;
-        $_SESSION['course']=$crs;
+  
 
 ?>
 <!DOCTYPE html>

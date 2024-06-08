@@ -37,7 +37,7 @@ function show_edit_user(){
     global $con;
     
     $id = $_SESSION['id'];
-    $query = "SELECT * FROM `studentinfo` WHERE `id` = '$id'";
+    $query = "SELECT * FROM `pr_info` WHERE `id` = '$id'";
     $res = mysqli_query($con, $query);
     if (mysqli_num_rows($res) > 0) {
         $temp_data = mysqli_fetch_assoc($res);
@@ -69,7 +69,7 @@ function save_edit_user() {
     $id = (int)$_POST['id']; 
             
 
-    $update = "UPDATE `studentinfo`
+    $update = "UPDATE `pr_info`
                SET `Fname`='$fname', `Lname`='$lname', `Password`='$password',
                    `Date`='$dob', `Gender`='$gender', `phone`='$phone', `city`='$city'
                WHERE `id`='$id'";

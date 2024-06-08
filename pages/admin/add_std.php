@@ -71,14 +71,14 @@ input[type="submit"].sub1:hover {
       </style>
     </head>
     <body>
-    <form action="conn_add_student.php" method="post">
+    <form action="add_std.php?action=add-std" method="post">
         <div class="container">
         <h1> students:  </h1>
             <label>student_id: </label>
             <select class="student" name="student">
                 <?php
-                      include 'connection.php';
-                      $query ="SELECT id FROM pr_info";
+                      include '../../backend/connection.php';
+                      $query ="SELECT * FROM `pr_info` WHERE `role` = 'student'";
                       $res = mysqli_query($con, $query);
                       if (mysqli_num_rows($res) > 0) {
                         while ($row = mysqli_fetch_assoc($res)) {
@@ -90,32 +90,11 @@ input[type="submit"].sub1:hover {
                 
                 ?>
             </select ><br>
-            <label>course_id: </label>
-            <select name="crs">
-                <?php
-
-                 include 'connection.php';
-
-
-            $query1 = "SELECT crs_id FROM course";
-            $res1 = mysqli_query($con, $query1);
-
-          if (mysqli_num_rows($res1) > 0) {
- 
-         while($row = mysqli_fetch_assoc($res1)) {
-          echo "<option value='".$row['crs_id']."'>".$row['crs_id']."</option>";
-         }
-  
-         } else {
-         
-            }
-
-                ?>
-            </select><br><br>
+           
             <label>section_id: </label>
-            <select class="course" name="jawad">
+            <select class="course" name="sec">
                 <?php
-                  include 'connection.php';
+                  include '../backend/connection.php';
                   $query ="SELECT sec_id FROM section";
                   $res = mysqli_query($con, $query);
                   if (mysqli_num_rows($res) > 0) {
@@ -139,3 +118,35 @@ input[type="submit"].sub1:hover {
         </form>
     </body>
 </html>
+<?php
+include('../../backend/connection.php');
+
+$action = $_GET['action'] ?? '';
+
+switch ($action) {
+    case 'add-std':
+        add_std();
+        break;
+
+    default:
+        break;
+}
+
+function add_std() {
+    global $con;
+
+    $student = $_POST['student'];
+    $section = $_POST['sec'];
+    $sql = "SELECT * FROM `section` WHERE `sec_id` = '$section'";
+    $res1 = mysqli_fetch_assoc(mysqli_query($con, $sql));
+
+    $crs = $res1['crs_id'];
+
+
+    $query = "INSERT INTO `studentcrs` (`student_id`, `course_id`, `sec_id`) VALUES ('$student', '$crs', '$section')";
+    mysqli_query($con, $query);
+
+
+    header('location:add_std.php');
+}
+?>

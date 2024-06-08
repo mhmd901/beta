@@ -174,7 +174,6 @@ document.getElementById("blogDate").value = dateTime;
 
 function show_crs(id, crs_name, crs_cridt) {
   let output = document.getElementById("crs-m");
-  console.log('Hello, World!');
 
   let form = `
     <table>
@@ -191,7 +190,7 @@ function show_crs(id, crs_name, crs_cridt) {
         <td>${crs_name[i]}</td>
         <td>${crs_cridt[i]}</td>
         <td>
-          <form method="post" action="../pages/d_crs.php">
+          <form method="post" action="../admin/d_crs.php">
             <input type="hidden" name="id" value="${id[i]}">
             <input type="submit" value="Delete" name="delete">
           </form>

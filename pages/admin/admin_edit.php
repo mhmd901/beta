@@ -39,7 +39,7 @@ function edit() {
   global $con;
   $id=$_POST['id'];
 $_SESSION['id'] = $id; 
-$query1 = "SELECT * FROM `studentinfo` WHERE `id` = '$id' ";   
+$query1 = "SELECT * FROM `pr_info` WHERE `id` = '$id' ";   
 $RES = mysqli_query($con,$query1);
 $rows = mysqli_num_rows($RES);
 

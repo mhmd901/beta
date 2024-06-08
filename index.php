@@ -22,8 +22,7 @@
                         <li><a href="#service">Services</a></li>
                         <li><a href="pages/blogs.php">blogs </a></li>
                         <li><a href="#contact">Contact </a></li>
-                        <li><a href="pages/in_login.php">instructor </a></li>
-                        <li><a href="pages/login.php">student</a></li>
+                        <li><a href="pages/login.php">login</a></li>
 
                     </ul>
                 </div>

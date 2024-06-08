@@ -1,8 +1,8 @@
 <?php
   include('../backend/connection.php');
-include('../backend/functions.php');
+  session_start();
 $email = $_SESSION['email'];
-$query1 = "SELECT * FROM pr_info WHERE Email = '$email' and role='instructor' ";
+$query1 = "SELECT * FROM pr_info WHERE Email = '$email' ";
 $res = mysqli_query($con, $query1);
 
 if (mysqli_num_rows($res) > 0) {
@@ -107,9 +107,9 @@ if (mysqli_num_rows($res) > 0) {
                 <li><a href="in_info.php"><i class="fa-solid fa-user"></i> instructor</a></li>
                 <li><a href="in_login.php"><i class="fa-thin fa-left-from-bracket"></i> back</a></li>
 
-            </ul>
+            </ul></nav>
     </header>
-    </nav>
+    
 
     <div class="panel">
         <div class="bio-graph-heading">

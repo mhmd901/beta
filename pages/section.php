@@ -1,26 +1,19 @@
 <?php
+include('../backend/connection.php');
+session_start();
 
-   include('../backend/connection.php');
-include('../backend/functions.php');
+$sec = $_SESSION['sec_id'];
+$crs = $_SESSION['course'];
 
-   $sec=$_SESSION['sec_id'];
-   $crs=$_SESSION['course'];
-   
+$query = "SELECT * FROM `studentcrs` WHERE `course_id` = '$sec' AND `sec_id` = '$crs'";
+$res = mysqli_query($con, $query);
 
-
-$query = "SELECT * from studentcrs where sec_id=$sec and course_id =$crs";
-
-   $res = mysqli_query($con, $query);
-   if (mysqli_num_rows($res) > 0) {
-       $temp_data = mysqli_fetch_assoc($res);
-       $id = $temp_data['student_id'];
-       
-      
-       
-       
-   }
- 
+if (mysqli_num_rows($res) > 0) {
+    $temp_data = mysqli_fetch_assoc($res);
+    $id = $temp_data['student_id'];
+}
 ?>
+
 <!DOCTYPE html>
 <html>
 
