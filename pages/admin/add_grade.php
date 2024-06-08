@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--
 <html>
 
 <head>
@@ -86,7 +87,7 @@
     </div>
 </body>
 
-</html>
+</html>-->
 <?php
 include('../../backend/connection.php');
 include('../../backend/functions.php');
@@ -104,14 +105,14 @@ switch ($action) {
         $servername = "localhost"; 
  $username = "root"; 
  $password = ""; 
- $database = "BETA"; 
+ $database = "beta"; 
  $con = mysqli_connect($servername, $username, $password, $database);
 
 $grades=$_POST['grade'];
 
- $query =  " UPDATE studentcrs SET grades = '$grades' where student_id = (select id from studentinfo where student_id = id)";
+ $query =  " UPDATE studentcrs SET grades = '$grades' where crs_id = (select course_id from pr_info where student_id = id)";
 mysqli_query($con, $query);
- header("location:../section.php");
+ 
     }
-
+header("location:../section.php");
 ?>

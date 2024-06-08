@@ -31,7 +31,7 @@ global $con;
 $email=$_POST['email'];
 $password=$_POST['password']; 
 $_SESSION['email'] = $email;
-$query1 = "SELECT * FROM `instructorinfo` WHERE `Email` = '$email' AND `Password` = '$password'";   
+$query1 = "SELECT * FROM pr_info WHERE `Email` = '$email' AND `Password` = '$password'";   
 $RES = mysqli_query($con,$query1);
 $rows = mysqli_num_rows($RES);
 

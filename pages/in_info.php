@@ -2,20 +2,27 @@
     include('../backend/connection.php');
 include('../backend/functions.php');
     /*$id = $_SESSION['instructor_id'];*/
-    $query = "SELECT s.*, i.*
-    FROM section s
-    JOIN instructorinfo i ON s.instructor_id = i.in_id  ";
+    $email = $_SESSION['email'];
+     /*$_SESSION['course'] = $crs;*/
+    $query = "SELECT * 
+    FROM section 
+    WHERE in_id = (SELECT id FROM pr_info WHERE Email = '$email' )" ;
+
+
     $res = mysqli_query($con, $query);
     if (mysqli_num_rows($res) > 0) {
         $temp_data = mysqli_fetch_assoc($res);
         $id = $temp_data['sec_id'];
-        $class = $temp_data['class_no'];
-        $in = $temp_data['instructor_id'];
+        $class = $temp_data['class'];
+        $in = $temp_data['in_id'];
         $crs = $temp_data['crs_id'];
-      
+       
     } else {
     
     }
+         $_SESSION['sec_id']=$id;
+        $_SESSION['course']=$crs;
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -38,7 +45,7 @@ include('../backend/functions.php');
     }
 
     .instructor thead tr {
-        background-color: #1e90ff;
+        background-color:rgb(255, 236, 158);
         color: #fff;
         text-align: left;
         font-weight: bold;
@@ -61,7 +68,7 @@ include('../backend/functions.php');
     }
 
     .instructor tbody tr:last-of-type {
-        border-bottom: 2px solid #1e90ff;
+        border-bottom: 2px solid rgb(255, 236, 158);
     }
 
     a {
@@ -69,8 +76,8 @@ include('../backend/functions.php');
         display: inline-block;
         justify-content: center;
         gap: 10px;
-        background-color: #1e90ff;
-        color: white;
+        background-color: rgb(255, 236, 158);
+        color: black;
         padding: 5px 10px;
         text-align: center;
         text-decoration: none;
@@ -80,6 +87,9 @@ include('../backend/functions.php');
 
     a:hover {
         background-color: 1a8cff;
+    }
+    th{
+        color: black;
     }
     </style>
 </head>
@@ -102,14 +112,16 @@ include('../backend/functions.php');
     while ($row = mysqli_fetch_assoc($res)) {
         echo "<tr>
                 <td>" . $row['sec_id'] . "</td>
-                <td>" . $row['class_no'] . "</td>
-                <td>" . $row['instructor_id'] . "</td>
+                <td>" . $row['class'] . "</td>
+                <td>" . $row['in_id'] . "</td>
                 <td>" . $row['crs_id'] . "</td>
                 <td><a href='section.php'>class</a></td>
               </tr>";
     }
 } else {
-    
+    echo "<tr>
+    <td> there is no data </td>
+       </tr>";
 }
 ?>
         </tbody>
