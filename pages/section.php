@@ -2,16 +2,13 @@
 include('../backend/connection.php');
 session_start();
 
-$sec = $_SESSION['sec_id'];
-$crs = $_SESSION['course'];
+$sec = $_POST['sec_id'];
+$crs = $_POST['course'];
 
-$query = "SELECT * FROM `studentcrs` WHERE `course_id` = '$sec' AND `sec_id` = '$crs'";
-$res = mysqli_query($con, $query);
+$sql = "SELECT * FROM `studentcrs` WHERE `course_id` = $crs AND `sec_id` = $sec";
+$res = mysqli_query($con, $sql);
 
-if (mysqli_num_rows($res) > 0) {
-    $temp_data = mysqli_fetch_assoc($res);
-    $id = $temp_data['student_id'];
-}
+
 ?>
 
 <!DOCTYPE html>
@@ -123,91 +120,62 @@ if (mysqli_num_rows($res) > 0) {
     <table class="students">
         <thead>
             <tr>
-                <th>student_id</th>
-                
-                <th>Grade</th>
+                <th>student id</th>
+                <th>course id</th>
+                <th>grade</th>
             </tr>
         </thead>
         <tbody>
-            <?php
-    if (mysqli_num_rows($res) > 0) {
+        <?php
+  if (mysqli_num_rows($res) > 0) {
       while ($row = mysqli_fetch_assoc($res)) {
-        echo "<tr>
-                <td>" . $row['student_id'] . "</td>
-               
-                <td>
-                  <form action='admin/add_grade.php' method='post' >
-                  <input type='text' class='input1'>
-                    <button type='submit' name='update_profile' ><i class='fa-solid fa-plus'></i>
-                </td>
-              </tr>";
-      }
-    } else {
-        echo "<tr>
-        <td> there is no data </td>
-           </tr>";
-    }
-    ?>
-        </tbody>
-    </table>
+          echo "<tr>
+                  <td>" . $row['student_id'] . "</td>
+                  <td>" . $row['course_id'] . "</td>
+                  <td>
+                      <form action='section.php?action=add_grade' method='post'>
+                        <input type='hidden' name='std_id' value='" . $row['student_id'] . "'> 
+                        <input type='hidden' name='crs_id' value='" . $row['course_id'] . "'> 
+                        <input type='hidden' name='sec_id' value='" . $sec . "'> 
+                        <input type='hidden' name='course' value='" . $crs . "'> 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!--
-    <table class="students">
-  
-  <thead>
-    <tr>
-    <th>student_id</th>
-      <th>course_id</th>
-      <th>Grade</th>
-    </tr>
-  </thead>
-  <tbody>
-
-  <?php
-  /*
-   if (mysqli_num_rows($res) > 0) {
-    while ($row = mysqli_fetch_assoc($res)) {
-        echo "<tr>
-                <td>" . $row['student_id'] . "</td>
-                <td>" . $row['course_id'] . "</td>
-                td>
-                    <form action='inserting_grades.php' method='post'>
-                      <input type='hidden' name='id' > 
-                      <input type='text' placeholder='grade' name='grade' id='grade'>
-                      <button type='submit'><i class='fa-solid fa-plus'></i></button>
-                    </form>
-                    <form action='deleting_grade.php' method='post'>
-                      <input type='hidden' name='id'>
-                      <button type='submit' class='delete'><i class='fa-solid fa-trash'></i></button>
-                    </form>
+                        <input type='text' placeholder='grade' name='grade' id='grade'>
+                        <button type='submit'><i class='fa-solid fa-plus'></i></button>
+                      </form>
                   </td>
               </tr>";
-    }
-} else {
+      }
+  } else {
+      echo "<tr><td> there is no data </td></tr>";
+  }
+?>
 
-}*/
-?>    
-  </tbody>
-</table>-->
-
-    <?php
-
-    ?>
+        </tbody>
+    </table>
 </body>
 
 </html>
+<?php
+include('../backend/connection.php');
+$action = $_GET['action'] ?? '';
+
+switch ($action) {
+    case "add_grade":
+        add_grade();
+        break;
+}
+
+function add_grade(){
+    include('../backend/connection.php');
+    $grade = $_POST['grade'];
+    $std_id = $_POST['std_id'];
+    $crs_id = $_POST['crs_id'];
+
+    $stmt = $con->prepare("UPDATE `studentcrs` SET `grade` = ? WHERE `student_id` = ? AND `course_id` = ?");
+    $stmt->bind_param("sss", $grade, $std_id, $crs_id);
+    $stmt->execute();
+
+    exit;
+}
+?>

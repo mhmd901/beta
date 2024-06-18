@@ -95,7 +95,7 @@ function get_blogs(title, date, id) {
   for (let i = 0; i < id.length; i++) {
     form += `
           <div class="blog-post">
-              <form method="post" action="../d_blog.php">
+              <form method="post" action="blogs.php?action=d-blog">
               <input type="hidden" name="id" value="${id[i]}">
                   <h2>${title[i]}</h2>
                   <p>${date[i]}</p>
@@ -190,7 +190,7 @@ function show_crs(id, crs_name, crs_cridt) {
         <td>${crs_name[i]}</td>
         <td>${crs_cridt[i]}</td>
         <td>
-          <form method="post" action="../admin/d_crs.php">
+          <form method="post" action="d_crs.php">
             <input type="hidden" name="id" value="${id[i]}">
             <input type="submit" value="Delete" name="delete">
           </form>
@@ -200,5 +200,105 @@ function show_crs(id, crs_name, crs_cridt) {
   }
 
   form += `</table>`;
+  output.innerHTML = form;
+}
+function show_grade(id, grade) {
+  let output = document.getElementById("grade");
+
+  let form = `
+    <table>
+      <tr>
+        <th>course id</th>
+        <th>grade</th>
+      </tr>
+  `;
+
+  for (let i = 0; i < id.length; i++) {
+    form += `
+      <tr>
+        <td>${id[i]}</td>
+        <td>${grade[i]}</td>
+      </tr>
+    `;
+  }
+
+  form += `</table>`;
+  output.innerHTML = form;
+}
+function show_sec(id, clas, ins, crs) {
+  let output = document.getElementById("sec");
+  console.log("Hello, World!");
+
+
+  let form = `
+    <table class="instructor">
+    <thead>
+      <tr>
+        <th>section id</th>
+        <th>class</th>
+        <th>instructor</th>
+        <th>course id</th>
+        <th>info</th>
+        
+      </tr>
+      </thead>
+  `;
+
+  for (let i = 0; i < id.length; i++) {
+    form += `
+    <tbody>
+      <tr>
+        <td>${id[i]}</td>
+        <td>${clas[i]}</td>
+        <td>${ins[i]}</td>
+        <td>${crs[i]}</td>
+                    <td><form action='section.php' method='post'>
+                    <input type="hidden" name='sec_id' value="${id[i]}">
+                    <input type="hidden" name="course" value="${crs[i]}">
+
+                                <button type='submit'>View Students</button>
+                            </form></td>
+      </tr>
+      </tbody>
+    `;
+  }
+
+  form += `</table>`;
+  output.innerHTML = form;
+}
+function edit_grade(std_id, crs) {
+  let output = document.getElementById("in_grade");
+
+  let form = `
+    <table>
+      <tr>
+        <th>student id</th>
+        <th>grade</th>
+      </tr>
+  `;
+
+  for (let i = 0; i < std_id.length; i++) {
+    form += `
+      <tr>
+        <td>${std_id[i]}</td>
+        <td><form action='../backend/inserting_grades.php' method='post'>
+                        <input type='hidden' name='std_id' value='${std_id[i]}'> 
+                        <input type='hidden' name='crs_id' value='${crs[i]}''> 
+                        <input type='text' placeholder='grade' name='grade' id='grade'>
+                        <button type='submit'>add</button>
+                      </form></td>
+      </tr>
+    `;
+  }
+
+  form += `</table>`;
+  output.innerHTML = form;
+}
+function in_ids(in_ids) {
+  let output = document.getElementById("in_ids"); 
+  let form = ``;
+  for (let i = 0; i < in_ids.length; i++) {
+    form += `<option value='${in_ids[i]}'>${in_ids[i]}</option>`;
+  }
   output.innerHTML = form;
 }

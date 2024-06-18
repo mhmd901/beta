@@ -2,7 +2,8 @@
     include('../backend/connection.php');
 session_start();
     $email = $_SESSION['email'];
-    $query = "SELECT * FROM section WHERE in_id = (SELECT id FROM pr_info WHERE Email = '$email' )" ;
+    $id = $_SESSION['id'];
+    $query = "SELECT * FROM `section` WHERE `in_id` = $id " ;
 
 
     $res = mysqli_query($con, $query);
@@ -12,14 +13,14 @@ session_start();
         $class = $temp_data['class'];
         $in = $temp_data['in_id'];
         $crs = $temp_data['crs_id'];
-                $_SESSION['sec_id']=$id;
-            $_SESSION['course']=$crs;
+
     } else {
     
     }
   
 
 ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -100,7 +101,7 @@ session_start();
                 <th>in_id</th>
                 <th>crs</th>
                 <th>information</th>
-            </tr>
+</tr>
         </thead>
         <tbody>
             <?php
@@ -111,7 +112,11 @@ session_start();
                 <td>" . $row['class'] . "</td>
                 <td>" . $row['in_id'] . "</td>
                 <td>" . $row['crs_id'] . "</td>
-                <td><a href='section.php'>class</a></td>
+                            <td><form action='section.php' method='post'>
+                                <input type='hidden' name='sec_id' value='" . $row['sec_id'] . "'>
+                                <input type='hidden' name='course' value='" . $row['crs_id'] . "'>
+                                <button type='submit'>View Students</button>
+                            </form></td>
               </tr>";
     }
 } else {
@@ -119,7 +124,7 @@ session_start();
     <td> there is no data </td>
        </tr>";
 }
-?>
+?> 
         </tbody>
     </table>
 

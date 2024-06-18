@@ -1,16 +1,8 @@
-<!--replaced-->
-
 <?php
-
- $servername = "localhost"; 
- $username = "root"; 
- $password = ""; 
- $database = "BETA"; 
- $con = mysqli_connect($servername, $username, $password, $database);
-
-$grades=$_POST['grade'];
-
- $query =  " UPDATE studentcrs SET grades = '$grades' where student_id = (select id from studentinfo where student_id = id)";
- $result=mysqli_query($con, $query);
- header("location:section.php")
+include('connection.php');
+$grade=$_POST['grade'];
+$std_id=$_POST['std_id'];
+$crs_id=$_POST['crs_id'];
+$sql="UPDATE `studentcrs` SET `grade` = '$grade' WHERE `student_id` = $std_id AND `course_id` = $crs_id;";
+$res = mysqli_query($con,$sql);
 ?>

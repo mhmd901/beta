@@ -9,6 +9,7 @@
 </head>
 
 <body>
+<?php include('header.php'); ?>
     <div class="top-bar">
         <span id="topBarTitle">Blog | New Post</span>
     </div>
@@ -46,6 +47,10 @@ switch ($action) {
             add_blog();
             exit;
         break;
+    case "d_blog":
+            d_blog();
+            exit;
+        break;
     }
 function  add_blog(){
   global $con;
@@ -55,6 +60,7 @@ $blogPara = $_POST["blogpara"];
 $sql = "INSERT INTO `blogs` ( `title`, `date`, `para`) VALUES ( '$blogTitle', '$blogDate', '$blogPara')";
 mysqli_query($con, $sql);
 }
+
 
 function get_blogs() {
     global $con;
@@ -74,6 +80,13 @@ function get_blogs() {
         echo "Error retrieving blog data.";
     }
 }
+
+    function d_blog(){
+        include('../backend/connection.php');
+        $blogId = $_POST["id"];
+        $sql = "DELETE FROM blogs WHERE `id` = $blogId";
+        mysqli_query($con, $sql);
+    }
 
 
 ?>

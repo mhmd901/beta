@@ -1,18 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Blog Post</title>
-    <link rel="stylesheet" href="test.css">
-</head>
-<body>
-    <div class="blog-post">
-        <h2>Title of Your Blog Post</h2>
-        <p>Published on May 26, 2024</p>
-        <img src="blog-image.jpg" alt="Blog Post Image">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac justo euismod, tincidunt nunc vel, aliquam libero.</p>
-        <a href="full-article.html">Read more</a>
-    </div>
-</body>
-</html>
+admen part:
+la 7ata zed section 3ala db fout 3al add pages/admin/section ad_sec.php 
+la 7ata zed student 3ala sec  fout 3ala pages/admin/add_std.php
+
+lintrauctor part 
+in_sec.php is my virsion of code le bebayen fe linstructor be aya pages hwe 
+in_info.php is jawad version '''''''''''''''''''''''''''''''''''''''''''''
+bas bade fout sheouf lsetudent bl section wzed grade 
+grade.php is my version 
+section.php is jawad version
+la hata fout 3al admin part http://localhost/beta/pages/admin/sigin-up.php

@@ -19,6 +19,7 @@ if (mysqli_num_rows($res) > 0) {
 }
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,6 +27,7 @@ if (mysqli_num_rows($res) > 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>profile</title>
     <link rel="stylesheet" href="../style/style2.css">
+    <script src="../scripts/myscript.js"></script>
 </head>
 <body>
 <div class="panel">
@@ -63,6 +65,31 @@ if (mysqli_num_rows($res) > 0) {
           </div>
       </div>
       <div>
+        <div id="grade">
+
+        </div>
+
     
 </body>
 </html>
+<?php
+function show_grade($con, $student_id){
+    $sql = "SELECT * FROM `studentcrs` WHERE `student_id` = ?";
+    $stmt = mysqli_prepare($con, $sql);
+    mysqli_stmt_bind_param($stmt, "i", $student_id);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
+    $courses = [];
+    $grades = [];
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        $courses[] = $row['course_id'];
+        $grades[] = $row['grade'];
+    }
+
+    echo("<script>show_grade(".json_encode($courses).",".json_encode($grades).")</script>");
+}
+
+show_grade($con, $id);
+?>

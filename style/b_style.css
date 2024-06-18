@@ -4,6 +4,43 @@ body
   background:rgb(255, 236, 158);
   word-wrap: break-word;
 }
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999; /* To make sure it's above other content */
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  height: 100vh; /* Filling the entire height of the viewport */
+  display: flex;
+  flex-direction: column; /* Align items vertically */
+  justify-content: flex-start; /* Align items at the top */
+  font-size: 24px;
+}
+
+.header ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column; /* Align items vertically */
+}
+
+.header li {
+  margin-bottom: 10px;
+}
+
+.header a {
+  text-decoration: none;
+  color: black;
+  padding: 5px 10px;
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+}
+
+.header a:hover {
+  background-color: #f0f0f0;
+}
+
 
 .top-bar
 {

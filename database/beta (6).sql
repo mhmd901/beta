@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2024 at 01:16 AM
+-- Generation Time: Jun 18, 2024 at 07:23 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -39,7 +39,7 @@ CREATE TABLE `blogs` (
 --
 
 INSERT INTO `blogs` (`id`, `title`, `date`, `para`) VALUES
-(2, '1234', '', '1234');
+(19, 'first post', '9/5/2024, 9:36 PM', '12345');
 
 -- --------------------------------------------------------
 
@@ -59,7 +59,10 @@ CREATE TABLE `course` (
 
 INSERT INTO `course` (`crs_id`, `crs_name`, `crs_crdt`) VALUES
 (1020, 'ccna', 12),
-(1028, 'cs21', 12);
+(1028, 'cs21', 12),
+(1044, 'ccna', 12),
+(1051, 'csaj', 12),
+(1052, 'cpp', 5);
 
 -- --------------------------------------------------------
 
@@ -87,13 +90,15 @@ CREATE TABLE `pr_info` (
 INSERT INTO `pr_info` (`Fname`, `Lname`, `Email`, `Password`, `Date`, `Gender`, `id`, `phone`, `city`, `role`) VALUES
 ('ali', 'amer', '1@beta', '1mm', '2024-04-03', 'Male', 10013, 0, '', 'admin'),
 ('ali', 'mjm', '10014@beta', '10014mm', '2024-04-03', 'Male', 10014, 0, '', 'admin\r\n'),
-('ali', 'amer', '10015@beta', '10015mm', '2024-04-25', 'Male', 10015, 0, '', 'instractor'),
 ('ahmad', 'hdy', '10050@beta', '10050mm', '2024-06-20', 'Female', 10050, 81370450, 'germany', 'student'),
-('ahmad', 'hdy', '10051@beta', '10051mm', '2024-06-20', 'Female', 10051, 81370450, 'germany', 'instractor'),
+('ali', 'hdy', '10051@beta', '10051mm', '2024-06-20', 'Female', 10051, 81370450, 'germany', 'instractor'),
 ('ali', 'hdy', '10052@beta', '10052mm', '2024-06-20', 'Female', 10052, 81370450, 'germany', 'admin'),
 ('ali', 'amer', '10053@beta', '10053mm', '2024-05-27', 'Male', 10053, 81370450, 'sarafand', 'instractor'),
 ('ali', 'bhn', '10054@beta', '10054mm', '2024-05-27', 'Male', 10054, 654, 'sarafand', 'student'),
-('hassan', 'bhn', '10055@beta', '10055mm', '2024-05-27', 'Male', 10055, 654, 'sarafand', 'student');
+('hassan', 'bhn', '10055@beta', '10055mm', '2024-05-27', 'Male', 10055, 654, 'sarafand', 'student'),
+('husam', 'lhafe', '10056@beta', '10056mm', '2024-05-27', 'Male', 10056, 81370450, 'sarafand', 'student'),
+('hassan', 'ali', '10057@beta', '10057mm', '2024-06-06', 'Male', 10057, 81370450, 'sarafand', 'instractor'),
+('daniel', 'traboulse', '10058@beta', '10058mm', '2024-06-04', 'programer', 10058, 927398273, 'der alzahrane', 'instractor');
 
 -- --------------------------------------------------------
 
@@ -116,13 +121,8 @@ CREATE TABLE `section` (
 --
 
 INSERT INTO `section` (`sec_id`, `sec_name`, `in_id`, `class`, `crs_id`, `date`, `time`) VALUES
-(123, '', 10051, 2, 1020, '123', '123'),
-(124, 'new', 10015, 0, 1028, 'Tuesday', '8:00 to 10:30'),
-(125, 'new', 10051, 0, 1028, 'Tuesday', '8:00 to 10:30'),
-(126, '', 10015, 0, 1020, 'Monday', '8:00 to 10:30'),
-(127, '', 10015, 0, 1020, 'Monday', '8:00 to 10:30'),
-(128, 'newq', 10051, 0, 1028, 'Tuesday', '11:00 to 13:30'),
-(129, 'newq', 10051, 0, 1020, 'Monday', '8:00 to 10:30');
+(137, 'advanced programing', 10058, 0, 1052, 'Wednesday', '11:00 to 13:30'),
+(138, 'network', 10058, 0, 1044, 'Wednesday', '11:00 to 13:30');
 
 -- --------------------------------------------------------
 
@@ -136,16 +136,6 @@ CREATE TABLE `studentcrs` (
   `sec_id` int(11) NOT NULL,
   `grade` varchar(100) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `studentcrs`
---
-
-INSERT INTO `studentcrs` (`student_id`, `course_id`, `sec_id`, `grade`) VALUES
-(123, 1020, 123, '0'),
-(10050, 1020, 123, '0'),
-(10050, 1028, 125, '0'),
-(10055, 1028, 125, '0');
 
 --
 -- Indexes for dumped tables
@@ -192,25 +182,25 @@ ALTER TABLE `studentcrs`
 -- AUTO_INCREMENT for table `blogs`
 --
 ALTER TABLE `blogs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `crs_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1029;
+  MODIFY `crs_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1053;
 
 --
 -- AUTO_INCREMENT for table `pr_info`
 --
 ALTER TABLE `pr_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10056;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10059;
 
 --
 -- AUTO_INCREMENT for table `section`
 --
 ALTER TABLE `section`
-  MODIFY `sec_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
+  MODIFY `sec_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
 
 --
 -- Constraints for dumped tables

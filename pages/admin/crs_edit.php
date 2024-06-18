@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../../style/style1.css">
 </head>
 <body>
+<?php include('header.php'); ?>
 <form action="../../backend/crs_edit_action.php" method="post">
         <label for="crs_name">course name</label>
         <input type="text"  name="crs_name" id="crs_name" placeholder="enter course name" >
@@ -25,6 +26,15 @@
 </html>
 <?php
 include('../../backend/connection.php');
+$action = isset($_GET['action']) ? $_GET['action'] : '';
+switch ($action) {
+
+
+    case "d-crs":
+           d_crs();
+            exit;
+        break;
+    }
 
 function show_crs(){
     global $con;
@@ -41,4 +51,10 @@ function show_crs(){
 
 }
 show_crs();
+function d_crs(){
+    include('../../backend/connection.php');
+    $courseId = $_POST["id"];
+    $sql = "DELETE FROM course WHERE `crs_id` = $courseId";
+    mysqli_query($con, $sql);
+};
 ?>

@@ -9,6 +9,7 @@
 </head>
 
 <body>
+<?php include('header.php'); ?>
     <form action="admin_edit.php?action=edit" method="post">
         <h2>edit user</h2>
         <div class="form-group id">

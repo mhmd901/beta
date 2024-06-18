@@ -5,14 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>admin</title>
-    <link rel="stylesheet" href="../style/style1.css">
+    <link rel="stylesheet" href="../../style/style1.css">
 </head>
 
 <body>
+<?php include('header.php'); ?>
     
-    <form action="../backend/sigin-up-action1.php" method="post">
+    <form action="../../backend/sigin-up-action1.php" method="post">
 
-        <h2>student info</h2>
+        <h2>perosonal  info</h2>
         <div class="form-group fullname">
             <label for="fullname">First Name</label>
             <input type="text" name="Fname" id="fullname" placeholder="Enter your first name" required>
@@ -57,21 +58,13 @@
         </div>
 
     </form>
-    <div class="edit">
-        <a href="admin/admin_edit.php">edit user</a><br>
-        <a href="admin/crs_edit.php">courses</a><br>
-        <a href="admin/users.php">all users</a><br>
-        <a href="admin/blog_admin.php">add blog</a><br>
-        <a href="admin/ad_sec.php">add section</a><br>
-        <a href="admin/add_std.php">add student</a>
-    </div>
 
 </body>
 
 </html>
 <?php
-include('../backend/connection.php');
-include('../backend/functions.php');
+include('../../backend/connection.php');
+include('../../backend/functions.php');
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 switch ($action) {
 

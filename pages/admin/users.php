@@ -10,7 +10,7 @@
 </head>
 
 <body>
-
+<?php include('header.php'); ?>
     <div class="mother">
         <div class="child">
             <div class="outputbox" id="outputbox">
@@ -24,7 +24,6 @@
 </html>
 <?php
 include('../../backend/connection.php');
-include('../../backend/functions.php');
 show_users();
 
   function show_users(){

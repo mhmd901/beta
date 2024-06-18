@@ -7,7 +7,7 @@ $res = mysqli_query($con, $query1);
 
 if (mysqli_num_rows($res) > 0) {
     $temp_data = mysqli_fetch_assoc($res);
-    $id = $temp_data['id'];
+    $_SESSION['id'] = $temp_data['id'];
     $fname = $temp_data['Fname'];
     $lname = $temp_data['Lname'];
     $city = $temp_data['city'];
@@ -104,7 +104,7 @@ if (mysqli_num_rows($res) > 0) {
     <header>
         <nav class="navigation">
             <ul>
-                <li><a href="in_info.php"><i class="fa-solid fa-user"></i> instructor</a></li>
+                <li><a href="in_sec.php"><i class="fa-solid fa-user"></i> instructor</a></li>
                 <li><a href="in_login.php"><i class="fa-thin fa-left-from-bracket"></i> back</a></li>
 
             </ul></nav>
@@ -120,7 +120,7 @@ if (mysqli_num_rows($res) > 0) {
             <h1><?php  ?></h1>
             <div class="row">
                 <div class="bio-row">
-                    <p><span>id </span>: <?php echo $id  ?></p>
+                    <p><span>id </span>: <?php echo       $_SESSION['id']  ?></p>
                 </div>
                 <div class="bio-row">
                     <p><span>First Name </span>: <?php echo $fname ?></p>
