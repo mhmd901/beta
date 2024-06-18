@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="../scripts/myscript.js"></script>  
+    <script src="../scripts/myscript.js"></script>
     <style>
     body {
         background-color: white;
@@ -22,7 +23,7 @@
     }
 
     .instructor thead tr {
-        background-color:rgb(255, 236, 158);
+        background-color: rgb(255, 236, 158);
         color: #fff;
         text-align: left;
         font-weight: bold;
@@ -65,31 +66,44 @@
     a:hover {
         background-color: 1a8cff;
     }
-    th{
+
+    th {
         color: black;
     }
     </style>
 </head>
+
 <body>
     <div id="sec"></div>
-    
+
 </body>
+
 </html>
 <?php
 function show_sec(){
     include('../backend/connection.php');
     session_start();
     $id = $_SESSION['id'];
+   
     $query = "SELECT * FROM `section` WHERE `in_id` = $id " ;
     
-    $id = array();
+    $id =[];
+    $clas =[];
+    $ins =[];
+    $crs =[];
     $res = mysqli_query($con, $query);
     if (mysqli_num_rows($res) > 0) {
-        $temp_data = mysqli_fetch_assoc($res);
-        $id[]= $temp_data['sec_id'];
-        $clas[] = $temp_data['class'];
-        $ins []= $temp_data['in_id'];
-        $crs []= $temp_data['crs_id'];
+        while($row = mysqli_fetch_assoc($res)){
+$id[] =$row['sec_id'];
+    $clas[] =$row['class'];
+    $ins[] =$row['in_id'];
+    $crs[] =$row['crs_id'];
+        }
+
+
+
+      
+      
         echo("<script>show_sec(".json_encode($id).",".json_encode($clas).",".json_encode($ins).",".json_encode($crs).")</script>");
     } else {
         echo "no data";

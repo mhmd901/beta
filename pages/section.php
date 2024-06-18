@@ -32,11 +32,11 @@ $res = mysqli_query($con, $sql);
     }
 
     .students thead tr {
-        background-color :rgb(255, 236, 158);
+        background-color: rgb(255, 236, 158);
         color: #fff;
         text-align: left;
         font-weight: bold;
-      
+
 
     }
 
@@ -44,7 +44,7 @@ $res = mysqli_query($con, $sql);
     .students td {
         /* padding: 12px 15px;*/
         padding: 20px 20px;
-      padding-left: 150px;
+        padding-left: 150px;
 
     }
 
@@ -70,7 +70,7 @@ $res = mysqli_query($con, $sql);
         font-size: 15px;
         font-weight: 500;
         padding: 0 10px;
-       
+
     }
 
     button {
@@ -107,7 +107,8 @@ $res = mysqli_query($con, $sql);
     .delete:hover {
         background-color: crimson;
     }
-    th{
+
+    th {
         color: black;
     }
     </style>
@@ -126,7 +127,7 @@ $res = mysqli_query($con, $sql);
             </tr>
         </thead>
         <tbody>
-        <?php
+            <?php
   if (mysqli_num_rows($res) > 0) {
       while ($row = mysqli_fetch_assoc($res)) {
           echo "<tr>
