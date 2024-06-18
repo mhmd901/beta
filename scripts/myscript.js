@@ -95,7 +95,7 @@ function get_blogs(title, date, id) {
   for (let i = 0; i < id.length; i++) {
     form += `
           <div class="blog-post">
-              <form method="post" action="blogs.php?action=d-blog">
+              <form method="post" action="blog_admin.php?action=d_blog">
               <input type="hidden" name="id" value="${id[i]}">
                   <h2>${title[i]}</h2>
                   <p>${date[i]}</p>
@@ -294,11 +294,4 @@ function edit_grade(std_id, crs) {
   form += `</table>`;
   output.innerHTML = form;
 }
-function in_ids(in_ids) {
-  let output = document.getElementById("in_ids"); 
-  let form = ``;
-  for (let i = 0; i < in_ids.length; i++) {
-    form += `<option value='${in_ids[i]}'>${in_ids[i]}</option>`;
-  }
-  output.innerHTML = form;
-}
+

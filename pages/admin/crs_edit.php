@@ -54,7 +54,12 @@ show_crs();
 function d_crs(){
     include('../../backend/connection.php');
     $courseId = $_POST["id"];
-    $sql = "DELETE FROM course WHERE `crs_id` = $courseId";
-    mysqli_query($con, $sql);
+    $stmt = $con->prepare("DELETE FROM course WHERE `crs_id` = ?");
+    $stmt->bind_param("i", $courseId);
+    $stmt->execute();
+    $stmt->close();
+    
+    header("location: crs_edit.php");
+    exit; 
 };
 ?>

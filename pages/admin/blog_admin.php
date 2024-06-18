@@ -59,6 +59,7 @@ $blogDate = $_POST["blogdate"];
 $blogPara = $_POST["blogpara"];
 $sql = "INSERT INTO `blogs` ( `title`, `date`, `para`) VALUES ( '$blogTitle', '$blogDate', '$blogPara')";
 mysqli_query($con, $sql);
+header("location: blog_admin.php");
 }
 
 
@@ -82,10 +83,11 @@ function get_blogs() {
 }
 
     function d_blog(){
-        include('../backend/connection.php');
+        include('../../backend/connection.php');
         $blogId = $_POST["id"];
         $sql = "DELETE FROM blogs WHERE `id` = $blogId";
         mysqli_query($con, $sql);
+        header("location: blog_admin.php");
     }
 
 
